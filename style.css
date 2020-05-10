@@ -1,0 +1,66 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f9fa;
+}
+
+main {
+  width: 1000px;
+}
+
+.title {
+  margin-top: 30px;
+}
+
+h2,
+h3 {
+  margin-top: 0;
+}
+
+.date {
+  margin-bottom: 10px;
+}
+
+.add-part {
+  margin-top: 25px;
+  margin-left: 75px;
+  position: fixed;
+}
+
+.addForm,
+.graph {
+  padding: 5px 20px 15px 15px;
+  background-color: #cfcfcf;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.graph {
+  margin-top: 30px;
+}
+
+.table {
+  position: relative;
+  left: 450px;
+}
+
+table {
+  /* margin: 0 auto; */
+  margin-top: 20px;
+  text-align: center;
+  border-collapse: collapse;
+  border: 1px solid #d4d4d4;
+}
+
+tr:nth-child(even) {
+  background: #e4e4e4;
+}
+
+th,
+td {
+  padding: 10px 30px;
+}
+
+th {
+  border-bottom: 1px solid #d4d4d4;
+}

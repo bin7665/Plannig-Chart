@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Planning Chart</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="title">
+      <h1>Welcome to planning chart</h1>
+    </div>
+    <h2>you can see what's your plan</h2>
+    <span> select date : <input type="date" class="date" /> </span>
+    <main>
+      <div class="add-part">
+        <div class="left-part">
+          <form class="addForm">
+            <h3>you can add your jobs in here</h3>
+            start time:
+            <select name="start-time" class="start"> </select>
+            end time:
+            <select name="end-time" class="end"> </select>
+            <br /><br />
+            plan:
+            <input type="text" class="planning" />
+            <input type="submit" value="add" />
+          </form>
+        </div>
+        <div class="graph">
+          <h3>you can see your rates</h3>
+          <div id="graph"></div>
+        </div>
+      </div>
+      <div class="table">
+        <div id="table"></div>
+      </div>
+    </main>
+    <script src="init.js"></script>
+  </body>
+</html>
