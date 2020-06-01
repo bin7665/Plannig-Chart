@@ -4,9 +4,9 @@ const addForm = document.querySelector(".addForm"),
   input = addForm.querySelector(".planning");
 
 const HOURS = 24;
-let DATE = localStorage.getItem("DATE");
-
-const time = document.querySelector(".date");
+let DATE = new Date();
+DATE = DATE.toJSON().substring(0, 10);
+const calender = document.querySelector(".date");
 
 function makeGraph(rates) {
   let graph = "";
@@ -96,21 +96,27 @@ function handleSubmit(event) {
 }
 
 function addJobs() {
-  let times = "";
+  let start_times = "";
+  let end_times = "";
   for (let i = 0; i < HOURS; i++) {
-    times += `<option value=${i}>${i < 10 ? `0${i}:00` : `${i}:00`}</option>`;
+    start_times += `<option value=${i}>${
+      i < 10 ? `0${i}:00` : `${i}:00`
+    }</option>`;
+    end_times += `<option value=${i}>${
+      i + 1 < 10 ? `0${i + 1}:00` : `${i + 1}:00`
+    }</option>`;
   }
-  $(".start").append(times);
-  $(".end").append(times);
+  $(".start").append(start_times);
+  $(".end").append(end_times);
   addForm.addEventListener("submit", handleSubmit);
 }
 
 function handleChange(event) {
   const target = event.target.id;
-  const targetRate = document.querySelectorAll(".rate");
 
   if (target !== "") {
-    const rateValue = targetRate[target].value;
+    const targetRate = document.querySelectorAll(".rate");
+    const rateValue = Number(targetRate[target].value);
     const loadedToday = localStorage.getItem(DATE);
     let rates = [];
 
@@ -130,25 +136,20 @@ function changeRate() {
   table.addEventListener("change", handleChange);
 }
 
-function timeHandler(event) {
-  const newDate = new Date(time.value);
-  DATE = newDate.toJSON().substring(0, 10);
+function calenderHandler(event) {
+  const newDate = new Date(calender.value);
+  DATE = date.toJSON().substring(0, 10);
   localStorage.setItem("DATE", DATE);
   loadDate();
 }
 
 function init() {
-  if (DATE === null || localStorage.getItem(DATE) === null) {
-    const now = new Date();
-    DATE = now.toJSON().substring(0, 10);
-    localStorage.setItem("DATE", DATE);
-  }
-  time.value = DATE;
+  calender.value = DATE;
 
   loadDate();
   addJobs();
   changeRate();
-  time.addEventListener("change", timeHandler);
+  calender.addEventListener("change", calenderHandler);
 }
 
 init();
